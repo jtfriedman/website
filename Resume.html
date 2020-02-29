@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body class="w3-content" style="max-width:1300px">
+
+<script>
+	var divs = [
+		  "errorFName", 
+		  "errorLName", 
+		  "errorEmail",
+				];
+	
+function validation_procedure()
+		{
+		var inputs = [];
+		inputs[0] = document.getElementById("FName").value;
+		inputs[1] = document.getElementById("LName").value;
+		inputs[2] = document.getElementById("email").value;
+
+		var errors = [];
+		errors[0] = "<span style='color:blue'> First name Error!</span>"
+		errors[1] = "<span style='color:blue'> Last name Error!</span>"
+		errors[2] = "<span style='color:blue'> Email address Error!</span>"
+			
+		var i;
+		for (i=0; i<inputs.length; i++)
+		{
+			var errorMessage = errors[i];
+			var entry = divs[i];
+				
+			if (inputs[i] == "")
+			document.getElementById(entry).innerHTML = errorMessage;
+
+		else if (i == 2)
+			{
+				var atpos = inputs[i].indexOf("@");  
+				var dotpos = inputs[i].lastIndexOf("."); 
+					
+				if (atpos < 1 || dotpos < atpos + 2 || dotpos >= inputs[i].length)
+				document.getElementById(entry).innerHTML = "<span style = 'color:blue' > Email address is NOT valid!</span>";
+				else
+				document.getElementById(entry).innerHTML = "Good!";
+			}
+				else
+				document.getElementById(entry).innerHTML = "Good!";
+			}
+		}
+
+	function finalvalidation_procedure()
+		{
+		var i;
+		var flag = 1;
+		for (i=0; i<divs.length; i++)
+			{
+				if (document.getElementById(divs[i]).innerHTML != "Good!")
+				flag = 0;
+			}
+			
+		if (flag == 1) 
+		document.getElementById("errorFinal").innerHTML = "Thank you! I will contact you shortly."
+		}
+	</script>
+
+<!-- First Grid: Logo & About -->
+<div class="w3-row">
+  <div class="w3-half w3-grey w3-container w3-center" style="height:950px">
+    <div class="w3-padding-64">
+      <h1>My Online Profile Page</h1>
+      <h2>Jacob Friedman</h2>
+    </div>
+    <div class="w3-padding-64">
+      <a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Home</a>
+      <a href="#work" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">My Projects</a>
+      <a href="#work" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">Resume</a>
+      <a href="#contact" class="w3-button w3-black w3-block w3-hover-brown w3-padding-16">Contact</a>
+    </div>
+  </div>
+  <div class="w3-half w3light-grey w3-container" style="height:950px">
+    <div class="w3-padding-64 w3-center">
+      <h1>About Me</h1>
+      <img src="https://i.ytimg.com/vi/SaA_cs4WZHM/hqdefault.jpg" class="w3-margin w3-circle" alt="Person" style="width:60%">
+      <div class="w3-left-align w3-padding-large">
+        <p>I'm a cat. A kitty cat.  </p>
+        <p>And i dance dance dance, and i dance dance dance.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid: Work & Resume -->
+<div class="w3-row">
+  <div class="w3-half w3-light-grey w3-center" style="min-height:1250px" id="work">
+
+  <div class="w3-half w3-grey w3-container" style="min-height:1250px">
+    <div class="w3-padding-64 w3-center">
+      <h2>Education</h2>
+      <div class="w3-container w3-responsive">
+        <table class="w3-table">
+        </table>
+<h2>Work Experience</h2>
+      <div class="w3-container w3-responsive">
+        <table class="w3-table">
+          <tr class="w3-light-gray">
+            <th>Year</th>
+            <th>Title</th>
+            <th>Location</th>
+          </tr>
+        </table>
+<table>
+<h2>Special Skills</h2>
+      <div class="w3-container w3-responsive">
+        <table class="w3-table">
+          <tr class="w3-light-gray">
+            <td>Languages:</td>
+            <td>English, American Sign Language</td>
+          </tr>
+<tr class="w3-white">
+            <td>Advanced:</td>
+            <td>Microsoft Word, Excel, PowerPoint, R, Visual Studio, SQL Server Management Studio</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid: Swing By & Contact -->
+<div class="w3-row" id="contact">
+  <div class="w3-half w3-grey w3-container w3-center" style="height:500px">
+    <div class="w3-padding-64">
+      <h1>Connect more...</h1>
+    </div>
+      <a href="https://www.facebook.com/">facebook</a><br><br>
+      <a href="https://www.linkedin.com/in//">linkedIn</a>
+      <p>jtfriedman09@gmail.com</p>
+      <p>Tampa, FL</p>
+  </div>
+  <div class="w3-half w3-light-grey w3-container" style="height:500px">
+    <div class="w3-padding-64 w3-padding-large">
+      <center><h1>Contact</h1></center>
+
+<center>
+<table class="w3-half w3-grey w3-container w3-center" style="width:100%">
+		<br>
+		<tr>
+			<td> First Name:</td>
+			<td><input type="text" id="FName" onkeyup="validation_procedure();"/></td>
+			<td><div id="errorFName"></div></td>
+		</tr>
+		<tr>
+			<td> Last Name:</td>
+			<td><input type="text" id="LName" onkeyup="validation_procedure();"/></td>
+			<td><div id="errorLName"></div></td>
+		</tr>
+		<tr>
+			<td> Email:</td>
+			<td><input type="text" id="email" onkeyup="validation_procedure();"/></td>
+			<td><div id="errorEmail"></div></td>
+		</tr>
+		<tr>
+			<td > Message:</td>
+			<td><input type="text" id="message"></td>
+		</tr>
+		<tr> 
+			<td><center><input type="button" id="create" value="Submit" onclick="validation_procedure();finalvalidation_procedure();"/></td>
+			<td><div id="errorFinal"></div></td>
+		</tr>
+
+	</table>
+        </center>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-black w3-padding-16">
+  <p>Powered by HTML and USF</p>
+</footer>
+</body>
+</html>
